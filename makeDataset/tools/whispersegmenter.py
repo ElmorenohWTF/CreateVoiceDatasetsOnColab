@@ -9,11 +9,11 @@ import os
 with open('/StyleGuide/audio.json', 'r') as f: # Path to whisperx json
     transcription = json.load(f)
     
-audio = AudioSegment.from_wav('/StyleGuide/makeDataset/audio.wav') #  Path to original wav file
+audio = AudioSegment.from_wav('/content/CreateVoiceDatasetsOnColab/makeDataset/tools/audio.wav') #  Path to original wav file
 
 
-output_dir = 'StyleGuide/makeDataset/segmentedAudio' # path to where you want segmented audio to go
-bad_audio_dir = '/StyleGuide/makeDataset/badAudio' # Path to badaudio folder
+output_dir = '/content/CreateVoiceDatasetsOnColab/makeDataset/tools/segmentedAudio' # path to where you want segmented audio to go
+bad_audio_dir = '/content/CreateVoiceDatasetsOnColab/makeDataset/tools/badAudio' # Path to badaudio folder
 
 os.makedirs(output_dir, exist_ok=True)
 os.makedirs(bad_audio_dir, exist_ok=True)
