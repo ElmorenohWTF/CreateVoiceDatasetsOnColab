@@ -36,5 +36,5 @@ with open('/content/CreateVoiceDatasetsOnColab/makeDataset/tools/output.txt', 'w
             audio_segment.export(os.path.join(bad_audio_dir, filename), format='wav')
 
 
-        phonemized_text = phonemize(sub.text, language='en-us') # I was experimenting with phonemized .srt files. You can comment this out if you want
+        phonemized_text = phonemize(sub.text, language='es-es')
         phonemized_file.write(f'{i}\n{str(sub.start)} --> {str(sub.end)}\n{phonemized_text}\n\n')
