@@ -4,20 +4,20 @@ import os
 from phonemizer import phonemize
 
 
-subs = pysrt.open('/StyleGuide/makeDataset/tools/audio.srt') # Path to .srt file
+subs = pysrt.open('/content/CreateVoiceDatasetsOnColab/makeDataset/tools/audio.srt') # Path to .srt file
 
 
-audio = AudioSegment.from_wav('/home/eleven/StyleGuide/makeDataset/audio.wav') # path to .wav file
+audio = AudioSegment.from_wav('/content/CreateVoiceDatasetsOnColab/makeDataset/tools/audio.wav') # path to .wav file
 
 
-output_dir = '/StyleGuide/makeDataset/segmentedAudio'   # path to where you want the segmented audio to go
-bad_audio_dir = '/home/eleven/StyleGuide/makeDataset/badAudio'  # path to where you want the bad audio to go
+output_dir = '/content/CreateVoiceDatasetsOnColab/makeDataset/tools/segmentedAudio'   # path to where you want the segmented audio to go
+bad_audio_dir = '/content/CreateVoiceDatasetsOnColab/makeDataset/tools/badAudio'  # path to where you want the bad audio to go
 
 os.makedirs(output_dir, exist_ok=True)
 os.makedirs(bad_audio_dir, exist_ok=True)
 
                    # path to /output.txt
-with open('/StyleGuide/makeDataset/trainingdata/output.txt', 'w') as out_file, open('phonemized_audio.srt', 'w') as phonemized_file: 
+with open('/content/CreateVoiceDatasetsOnColab/makeDataset/tools/output.txt', 'w') as out_file, open('phonemized_audio.srt', 'w') as phonemized_file: 
 
     for i, sub in enumerate(subs):
 
