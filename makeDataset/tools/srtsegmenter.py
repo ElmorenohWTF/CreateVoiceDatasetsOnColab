@@ -28,6 +28,8 @@ with open('/content/CreateVoiceDatasetsOnColab/makeDataset/tools/output.txt', 'w
 
         duration = len(audio_segment)
 
+        print(f"Segment {i} - Start: {start_time}ms, End: {end_time}ms, Duration: {duration}ms")  # Print segment times and duration
+
         filename = f'segment_{i}.wav'
         if 1000 <= duration <= 11600: # This part throws out audio segments under 1 second and over 11.6 seconds
             audio_segment.export(os.path.join(output_dir, filename), format='wav')
@@ -37,4 +39,6 @@ with open('/content/CreateVoiceDatasetsOnColab/makeDataset/tools/output.txt', 'w
 
 
         phonemized_text = phonemize(sub.text, language='es')
+        print(f"Phonemized text for segment {i}: {phonemized_text}")  # Print phonemized text
+
         phonemized_file.write(f'{i}\n{str(sub.start)} --> {str(sub.end)}\n{phonemized_text}\n\n')
