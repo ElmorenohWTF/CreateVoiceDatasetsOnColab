@@ -3,19 +3,12 @@ from pydub import AudioSegment
 import os
 from phonemizer import phonemize
 
-
 subs = pysrt.open('/content/CreateVoiceDatasetsOnColab/makeDataset/tools/audio.srt') # Path to .srt file
-
-
 audio = AudioSegment.from_wav('/content/CreateVoiceDatasetsOnColab/makeDataset/tools/audio.wav') # path to .wav file
-
-
 output_dir = '/content/CreateVoiceDatasetsOnColab/makeDataset/tools/segmentedAudio'   # path to where you want the segmented audio to go
 bad_audio_dir = '/content/CreateVoiceDatasetsOnColab/makeDataset/tools/badAudio'  # path to where you want the bad audio to go
-
 os.makedirs(output_dir, exist_ok=True)
 os.makedirs(bad_audio_dir, exist_ok=True)
-
 output_file_path = '/content/CreateVoiceDatasetsOnColab/makeDataset/tools/output.txt'
 
 # Comprobar si existe un estado guardado
@@ -29,7 +22,7 @@ try:
             last_index = 0  # Si el archivo está vacío, comenzar desde cero
 except FileNotFoundError:
     last_index = 0
-   
+
                    # path to /output.txt
 with open(output_file_path, 'a') as out_file, open('phonemized_audio.srt', 'w') as phonemized_file: 
 
@@ -56,3 +49,13 @@ with open(output_file_path, 'a') as out_file, open('phonemized_audio.srt', 'w') 
         print(f"Phonemized text for segment {i}: {phonemized_text}")  # Print phonemized text
 
         phonemized_file.write(f'{i}\n{str(sub.start)} --> {str(sub.end)}\n{phonemized_text}\n\n')
+try:
+    last_index = int(last_line.split('_')[1]) + 1  # Obtener el índice del último segmento procesado y sumar 1
+except (ValueError, IndexError):
+    # Si no se puede obtener el índice, buscar la última línea con un índice válido
+    valid_lines = [line for line in lines if line.startswith('segment_')]
+    if valid_lines:
+        last_line = valid_lines[-1]
+        last_index = int(last_line.split('_')[1]) + 1  # Obtener el índice del último segmento procesado y sumar 1
+    else:
+        last_index = 0  # Si no hay líneas válidas, comenzar desde cero
