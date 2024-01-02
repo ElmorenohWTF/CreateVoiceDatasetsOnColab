@@ -31,7 +31,7 @@ except FileNotFoundError:
     last_index = 0
    
                    # path to /output.txt
-with open('output_file_path', 'a') as out_file, open('phonemized_audio.srt', 'w') as phonemized_file: 
+with open(output_file_path, 'a') as out_file, open('phonemized_audio.srt', 'w') as phonemized_file: 
 
     for i, sub in enumerate(subs):
 
